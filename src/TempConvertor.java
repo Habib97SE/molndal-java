@@ -3,8 +3,8 @@ import java.util.Scanner;
 
 /***
  * Habiballah Hezarehee
- * 97habhez@
- *
+ * 	97habhez@gafe.molndal.se
+ * 	Java Integration VT 2023
  */
 public class TempConvertor
 {
