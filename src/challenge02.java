@@ -2,8 +2,9 @@ public class challenge02
 {
     public static void main (String[] args)
     {
-        final int UnderTwenty = 20;
-        final int UnderThirty = 30;
+        final int AgeTwenty = 20;
+        final int AgeThirty = 30;
+        final int BreakAge = 40;
         String[] names = {"Elena Gilbert", "Stefan Salvatore", "Damon Salvatore", "Caroline Forbes", "Bonnie Bennett",
                 "Tyler Lockwood", "Matt Donovan", "Alaric Saltzman", "Klaus Mikaelson", "Rebekah Mikaelson"};
         int[] ages = {17, 162, 177, 17, 17, 22, 19, 41, 1000, 1012};
@@ -15,7 +16,7 @@ public class challenge02
         System.out.println("Alla som är under 20:");
         for (int i = 0; i < names.length; i++)
         {
-            if (ages[i] < UnderTwenty)
+            if (ages[i] < AgeTwenty)
                 System.out.println(String.join("", "- " ,names[i], ": ", Integer.toString(ages[i])));
             if (ages[i] < youngestAge)
             {
@@ -33,7 +34,7 @@ public class challenge02
         System.out.println("Alla som är 20 eller över 20, och under 30.");
         for (int i = 0; i < names.length; i++)
         {
-            if (ages[i] >= UnderTwenty && ages[i] < UnderThirty)
+            if (ages[i] >= AgeTwenty && ages[i] < AgeThirty)
                 System.out.println(String.join("", "- " ,names[i], ": ", Integer.toString(ages[i])));
         }
 
@@ -41,7 +42,7 @@ public class challenge02
         System.out.println("Alla som är yngre än 20 och äldre än 30.");
         for (int i = 0; i < names.length; i++)
         {
-            if (ages[i] < UnderTwenty || ages[i] > 29)
+            if (ages[i] < AgeTwenty || ages[i] >= AgeThirty)
                 System.out.println(String.join("", "- " ,names[i], ": ", Integer.toString(ages[i])));
         }
 
@@ -57,7 +58,7 @@ public class challenge02
         System.out.println("Körningen stoppas om åldern är över 40.");
         for (int i = 0; i < names.length; i++)
         {
-            if (ages[i] > 40)
+            if (ages[i] > BreakAge)
                 break;
             System.out.println(String.join("", "- " ,names[i], ": ", Integer.toString(ages[i])));
         }
