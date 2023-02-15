@@ -46,7 +46,7 @@ public class TempConvertor
         // Printa ut resultaten
         System.out.printf("From Celsius to Fahrenheit: %s%n", Float.toString(celsiusToFahrenheit));
         System.out.printf("From Celsius to Kelvin: %s%n", Float.toString(celsiusToKelvin));
-        System.out.printf("From Farenheit to Celsius: %s%n", Float.toString(fahrenheitToCelsius));
+        System.out.printf("From Fahrenheit to Celsius: %s%n", Float.toString(fahrenheitToCelsius));
         System.out.printf("From Fahrenheit to Kelvin: %s%n", Float.toString(fahrenheitToKelvin));
         System.out.printf("From Kelvin to Fahrenheit: %s%n", Float.toString(kelvinToFahrenheit));
         System.out.printf("From Kelvin to Celsius: %s", Float.toString(kelvinToCelsius));
