@@ -8,9 +8,8 @@ public class ConditionLoop
         {
             // if svar is empty then continue
             if (svar[i].isEmpty())
-            {
                 continue;
-            }
+
             System.out.println(namn[i]);
         }
     }
