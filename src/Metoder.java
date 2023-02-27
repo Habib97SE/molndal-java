@@ -120,10 +120,12 @@ public class Metoder
 
     public static int calculateExponent (int num, int exponent)
     {
-        int sum = 1;
-        for (int i = 1; i <= exponent; i++)
-            sum *= num;
-        return sum;
+        if (exponent == 0)
+            return 1;
+        if (exponent == 1)
+            return num;
+        else
+            return num * calculateExponent(num, exponent - 1);
     }
 
     public static boolean isCharInt (char a)
@@ -143,6 +145,9 @@ public class Metoder
         vowels.add('i');
         vowels.add('o');
         vowels.add('u');
+        vowels.add('å');
+        vowels.add('ä');
+        vowels.add('ö');
 
         return vowels.contains(a);
 
@@ -159,6 +164,7 @@ public class Metoder
         return number % 1 == 0;
     }
 
+    //
     public static double findLargerDivisibleNumber (int num1, int num2)
     {
         int start = num1 + num2 + 1;
@@ -170,6 +176,7 @@ public class Metoder
         }
     }
 
+    // ovning nr 22
     public static int findNumberOfNumbers (String text)
     {
         if (text.length() == 0)
@@ -180,43 +187,41 @@ public class Metoder
         return findNumberOfNumbers(text.substring(1));
     }
 
+    /**
+     * Check if the char ascii code is between 48 and 57 (the ascii code for digits)
+     *
+     * @param a : the char to control
+     * @return : returns true if it is between 48 and 57, else false.
+     */
     public static boolean isCharInteger (char a)
     {
         return (int) a >= 48 && (int) a <= 57;
     }
 
+    // ovning nr 23
     public static int calculateSumNumbers (String text)
     {
         int sum = 0, i = 0, j = 0;
 
-        String temp = "";
-
-        while (i != text.length())
+        StringBuilder temp = new StringBuilder();
+        while (i < text.length())
         {
-            // if char is not integer skip rest of statement
-            if (!isCharInteger(text.charAt(i)))
-                continue;
-            temp += text.charAt(i);
-            j = i + 1;
-            // check if next chars are also integers (a number with more than one digit).
-            while (j != text.length())
+            if (isCharInteger(text.charAt(i)))
             {
-                if (isCharInteger(text.charAt(j)))
+                temp.append(text.charAt(i));
+                j = i + 1;
+                while (j < text.length() && isCharInteger(text.charAt(j)))
                 {
-                    temp += text.charAt(j);
-                } else
-                {
-                    // if next char is not integer, convert temp to int then add up to sum.
-                    sum += Integer.parseInt(temp);
-                    temp = "";
-                    // run the outer while loop from j position.
-                    i = j;
-                    break;
-                }
-                j++;
-            } // end while(j)
+                    temp.append(text.charAt(j));
+                    j++;
+                } // end while(j)
+                sum += Integer.parseInt(temp.toString());
+                temp = new StringBuilder();
+                i = j;
+            }
+
             i++;
-        } // end while (i)
+        } // end while(i)
 
         return sum;
     }
@@ -224,7 +229,6 @@ public class Metoder
 
     public static void main (String[] args)
     {
-        int sum = calculateSumNumbers("fry32g5gs");
-        System.out.println(sum);
+        System.out.println(calculateSumNumbers("fji443jjf1")); // 443 + 1 = 444
     }
 }
