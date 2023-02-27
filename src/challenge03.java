@@ -8,19 +8,21 @@ public class challenge03
 
     public static void main (String[] args)
     {
+        final String equalSigns = "=============";
         ArrayList<String> nameList = new ArrayList<>();
 
         String[] menuItems = new String[]{"Exit", "Create new name", "Read names", "Update a name", "Delete a name"};
+
 
         boolean continueLoop = true;
 
         while (continueLoop)
         {
-            System.out.println("Meny: ");
-            System.out.println("==============");
+            System.out.println("Menu: ");
+            System.out.println(equalSigns);
             for (int i = 0; i < menuItems.length; i++)
                 System.out.println(String.join("", Integer.toString(i), "- ", menuItems[i]));
-            System.out.println("==============");
+            System.out.println(equalSigns);
             System.out.print("Enter your choice: ");
             int choice = scanner.nextInt();
             switch (choice)
@@ -55,21 +57,14 @@ public class challenge03
                     System.out.print("Enter the old name: ");
                     String oldName = scanner.next();
 
-                    int nameIndex = 0;
-                    boolean nameFound = false;
-                    for (int i = 0; i < nameList.size(); i++)
-                    {
-                        if (nameList.get(i).equals(oldName))
-                        {
-                            nameIndex = i;
-                            nameFound = true;
-                        }
-                    }
-                    if (nameFound)
+                    int nameIndex = nameList.indexOf(oldName);
+
+                    if (nameIndex >= 0)
                     {
                         System.out.print("Enter the new name: ");
                         newName = scanner.next();
                         nameList.set(nameIndex, newName);
+                        System.out.println("Name has been changed successfully.");
                     } else
                         System.out.println("Name was not found!");
                     break;
@@ -83,7 +78,7 @@ public class challenge03
                     System.out.println("Which name do you want to delete: ");
                     String deleteName = scanner.next();
 
-                    nameFound = nameList.remove(deleteName);
+                    boolean nameFound = nameList.remove(deleteName);
                     if (nameFound)
                         System.out.println(String.join("", deleteName, " has been deleted successfully."));
                     else
