@@ -1,20 +1,14 @@
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Objects;
-
 public class Person
 {
-    private String firstName;
-    private String lastName;
-    private int age;
-    private String socialSecurityNumber;
+    String firstName;
+    String lastName;
+    int age;
 
-    public Person (String firstName, String lastName, int age, String socialSecurityNumber)
+    public Person (String firstName, String lastName, int age)
     {
         this.firstName = firstName;
         this.lastName = lastName;
         this.age = age;
-        this.socialSecurityNumber = socialSecurityNumber;
     }
 
     public String getFirstName ()
@@ -47,32 +41,29 @@ public class Person
         this.age = age;
     }
 
-    public String getSocialSecurityNumber ()
+    public String[] splitString (String str, String regex)
     {
-        return socialSecurityNumber;
+        return str.split(regex);
     }
 
-    public void setSocialSecurityNumber (String socialSecurityNumber)
+    public String extrctFirstName(String fullName)
     {
-        this.socialSecurityNumber = socialSecurityNumber;
+        return  splitString(fullName, " ")[0];
     }
 
-
-
-    /**
-     * This method compare two persons
-     *
-     * @param person > the person to compare with the curren object.
-     * @return : returns true if it is same otherwise false
-     */
-    public boolean toCompare (Person person)
+    public String extractLastName (String fullName)
     {
-        return this.socialSecurityNumber.equals(person.socialSecurityNumber);
+        return  splitString(fullName, " ")[1];
+    }
+
+    public String getFullName ()
+    {
+        return String.join("", this.getFirstName(), " ", this.getLastName());
     }
 
     @Override
     public String toString ()
     {
-        return this.firstName + " " + this.lastName + " " + this.age + " " + this.socialSecurityNumber;
+        return this.getFirstName() + " " + this.getLastName() + " " + Integer.toString(this.getAge());
     }
 }

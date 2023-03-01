@@ -101,21 +101,21 @@ public class Metoder
 
     public static void isPrime ()
     {
-        System.out.println("Write a number: ");
-        int number = scanner.nextInt();
-        boolean result = true;
-        for (int i = 0; i < number; i++)
+        System.out.print("Enter a number: ");
+        int num = scanner.nextInt();
+        boolean isNumberPrime = true;
+        for (int i = 2; i < num; i++)
         {
-            if (number % i != 0)
+            if (num % i == 0)
             {
-                result = false;
+                isNumberPrime = false;
                 break;
             }
         }
-        if (result)
-            System.out.println("It is prime!");
+        if (isNumberPrime)
+            System.out.println(num + " is a prime number");
         else
-            System.out.println("It is not prime!");
+            System.out.println(num + " is not a prime number");
     }
 
     public static int calculateExponent (int num, int exponent)
@@ -219,16 +219,20 @@ public class Metoder
                 temp = new StringBuilder();
                 i = j;
             }
-
             i++;
         } // end while(i)
-
         return sum;
     }
 
+    public static int factorial (int num)
+    {
+        if (num == 0)
+            return 1;
+        return num * factorial(num - 1);
+    }
 
     public static void main (String[] args)
     {
-        System.out.println(calculateSumNumbers("fji443jjf1")); // 443 + 1 = 444
+        System.out.println(factorial(5));
     }
 }
